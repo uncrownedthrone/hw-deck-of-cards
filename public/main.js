@@ -2,7 +2,7 @@
 
 const qs = (e) => document.querySelector(e)
 
-let suits = ['Hearts', 'Clubs', 'Spades', 'Diamonds']
+let suits = ['Hearts ♥️', 'Clubs ♣️', 'Spades ♠️', 'Diamonds ♦️']
 let faces = [
   { name: 'Ace', value: '1' },
   { name: '2', value: '2' },
