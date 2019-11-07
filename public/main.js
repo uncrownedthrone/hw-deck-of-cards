@@ -4,7 +4,7 @@ const qs = (e) => document.querySelector(e)
 
 let suits = ['Hearts ♥️', 'Clubs ♣️', 'Spades ♠️', 'Diamonds ♦️']
 let faces = [
-  { name: 'Ace', value: '1' },
+  { name: 'A', value: '1' },
   { name: '2', value: '2' },
   { name: '3', value: '3' },
   { name: '4', value: '4' },
@@ -14,11 +14,14 @@ let faces = [
   { name: '8', value: '8' },
   { name: '9', value: '9' },
   { name: '10', value: '10' },
-  { name: 'Jack', value: '11' },
-  { name: 'Queen', value: '12' },
-  { name: 'King', value: '13' }
+  { name: 'J', value: '11' },
+  { name: 'Q', value: '12' },
+  { name: 'K', value: '13' }
 ]
 let deck = []
+let j = 0
+let i = 52
+let card
 
 const createDeck = () => {
   for (let suitIndex = 0; suitIndex < suits.length; suitIndex++) {
@@ -32,13 +35,6 @@ const createDeck = () => {
   }
 }
 
-// TODO: look into this. can't get it to work yet. beyond me.
-// const shuffleDeck {
-//   for i from n - 1 down to 1 do:
-//   j = random integer (where 0 <= j <= i)
-//   swap items[i] with items[j]
-// }
-
 const randomFirstCard = () => {
   createDeck()
   const randomNumber = Math.floor(Math.random() * 52)
@@ -48,17 +44,13 @@ const randomFirstCard = () => {
 }
 
 const randomSecondCard = () => {
-  const randomNumber = Math.random()
-  const randomIndexNumber = randomNumber * 52
-  const roundedIndexNumber = Math.floor(randomIndexNumber)
-  const randomCard = deck[roundedIndexNumber]
+  const randomNumber = Math.floor(Math.random() * 52)
+  const randomCard = deck[randomNumber]
   const formattedCard = `${randomCard.name} of ${randomCard.suit}`
   qs('.faceUp').textContent = formattedCard
 }
 
 const main = () => {
-  randomFirstCard()
-  randomSecondCard()
   qs('.newFirstCard').addEventListener('click', () => randomFirstCard())
   qs('.faceUp').addEventListener('click', () => randomSecondCard())
 }
